@@ -11,10 +11,6 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 
 //import routes come at the end of middlewares
 app.use(express.static('public'));
-// const cssRoute = require('./routes/css');
-// const domRoute = require('./routes/dom');
-// app.use('/css', cssRoute);
-// app.use('/dom', domRoute);
 const fpRoute = require('./routes/fp');
 app.use('/fp', fpRoute);
 
@@ -32,12 +28,6 @@ app.post('/', async (req, res) => {
         console.log(fp);
         fp.save();
         res.sendStatus(200); //good to go
-        // let cssFp = await new CssFp({extensions : req.body});
-        // console.log(cssFp); //on server
-        // cssFp.save();
-        // let domFp = await new DomFp({extensions : req.body});
-        // console.log(domFp); //on server
-        // domFp.save();
     } catch (err) {
         console.log(err);
         res.sendStatus(400); //bad request

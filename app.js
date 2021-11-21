@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const mongoose = require('mongoose');
-const {CssFp} = require('./models/Css');
-const {DomFp} = require('./models/Dom');
+const {Fp} = require('./models/Fp');
 
 //MIDDLEWARES
 //parse JSON
@@ -12,10 +11,12 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 
 //import routes come at the end of middlewares
 app.use(express.static('public'));
-const cssRoute = require('./routes/css');
-const domRoute = require('./routes/dom');
-app.use('/css', cssRoute);
-app.use('/dom', domRoute);
+// const cssRoute = require('./routes/css');
+// const domRoute = require('./routes/dom');
+// app.use('/css', cssRoute);
+// app.use('/dom', domRoute);
+const fpRoute = require('./routes/fp');
+app.use('/fp', fpRoute);
 
 
 //ROUTES
@@ -24,22 +25,28 @@ app.use('/dom', domRoute);
 // });
 
 //submit a CssExt data to database when receiving it via POST
-// app.post('/', async (req, res) => {
-//     try {
-//         // let cssFp = await new CssFp({extensions : req.body});
-//         // console.log(cssFp); //on server
-//         // cssFp.save();
-//         let domFp = await new DomFp({extensions : req.body});
-//         console.log(domFp); //on server
-//         domFp.save();
-//     } catch (err) {
-//         console.log(err);
-//     }
-// });
+app.post('/', async (req, res) => {
+    try {
+        console.log(req.body);
+        let fp = await new Fp({extensions : req.body});
+        console.log(fp);
+        fp.save();
+        res.sendStatus(200); //good to go
+        // let cssFp = await new CssFp({extensions : req.body});
+        // console.log(cssFp); //on server
+        // cssFp.save();
+        // let domFp = await new DomFp({extensions : req.body});
+        // console.log(domFp); //on server
+        // domFp.save();
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(400); //bad request
+    }
+});
 
 //CONNECT TO DB
 mongoose.connect(
-    'mongodb://localhost:27017/rest',
+    'mongodb://localhost:27017/capstone',
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => console.log("database connected")
 );

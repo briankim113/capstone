@@ -40,6 +40,5 @@ const Fp = mongoose.Schema({
     extensions : [Object]
 })
 
-const FpSchema = mongoose.model('Fps', Fp);
-
-module.exports = {Fp: FpSchema};
+const FpModel = mongoose.model('fps', Fp);
+module.exports = FpModel;

@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const mongoose = require('mongoose');
-const {Fp} = require('./models/Fp');
+const FpModel = require('./fpModel');
+const fpRoute = require('./fpRoute');
 
 //MIDDLEWARES
 //parse JSON
@@ -11,7 +12,6 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 
 //import routes come at the end of middlewares
 app.use(express.static('public'));
-const fpRoute = require('./routes/fp');
 app.use('/fp', fpRoute);
 
 
@@ -24,7 +24,7 @@ app.use('/fp', fpRoute);
 app.post('/', async (req, res) => {
     try {
         console.log(req.body);
-        let fp = await new Fp({extensions : req.body});
+        let fp = await new FpModel({extensions : req.body});
         console.log(fp);
         fp.save();
         res.sendStatus(200); //good to go

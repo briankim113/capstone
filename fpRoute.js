@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {Fp} = require('../models/Fp');
+const FpModel = require('./fpModel');
 
 //find and return all DomFps
 router.get('/', async (req, res) => {
     try {
-        const fps = await Fp.find();
+        const fps = await FpModel.find();
         res.json(fps); //show on the page
     }
     catch(err) {

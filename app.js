@@ -19,23 +19,23 @@ app.use('/dom', domRoute);
 
 
 //ROUTES
-app.get('/', (req, res) => {
-    res.send('We are on home')
-});
+// app.get('/', (req, res) => {
+//     res.send('We are on home')
+// });
 
 //submit a CssExt data to database when receiving it via POST
-app.post('/', async (req, res) => {
-    try {
-        // let cssFp = await new CssFp({extensions : req.body});
-        // console.log(cssFp); //on server
-        // cssFp.save();
-        let domFp = await new DomFp({extensions : req.body});
-        console.log(domFp); //on server
-        domFp.save();
-    } catch (err) {
-        console.log(err);
-    }
-});
+// app.post('/', async (req, res) => {
+//     try {
+//         // let cssFp = await new CssFp({extensions : req.body});
+//         // console.log(cssFp); //on server
+//         // cssFp.save();
+//         let domFp = await new DomFp({extensions : req.body});
+//         console.log(domFp); //on server
+//         domFp.save();
+//     } catch (err) {
+//         console.log(err);
+//     }
+// });
 
 //CONNECT TO DB
 mongoose.connect(

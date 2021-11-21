@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //   console.log("DarkReader not detected");
     // }
 
-  var xhr = new XMLHttpRequest();
-  var url = "http://localhost:3000/"; //change url based on ip_address
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  var data = JSON.stringify(extensions);
-  xhr.send(data);
+  // var xhr = new XMLHttpRequest();
+  // var url = "http://localhost:3000/"; //change url based on ip_address
+  // xhr.open("POST", url, true);
+  // xhr.setRequestHeader("Content-Type", "application/json");
+  // var data = JSON.stringify(extensions);
+  // xhr.send(data);
 });

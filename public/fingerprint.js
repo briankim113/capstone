@@ -83,6 +83,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
     */
     let ghosteryElem = document.getElementById("ghostery-tracker-tally");
     if (ghosteryElem != null) {
+        console.log(JSON.stringify(ghosteryElem));
+        console.log(JSON.stringify(ghosteryElem.attributes));
+        console.log(ghosteryElem);
+        console.log(ghosteryElem.attributes);
+
         extensions["ghostery"] = {
             id: ghosteryElem.id,
             clientHeight : ghosteryElem.clientHeight,
@@ -110,6 +115,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //Dark Reader meta tag
     let darkReaderMeta = document.querySelector('meta[name="darkreader"]')
     if (darkReaderMeta != null) {
+        console.log(JSON.stringify(darkReaderMeta));
+        console.log(JSON.stringify(darkReaderMeta.attributes));
+        console.log(darkReaderMeta);
+        console.log(darkReaderMeta.attributes);
+
         extensions["darkReader"] = {
             name: darkReaderMeta.name,
             content : darkReaderMeta.content

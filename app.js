@@ -42,4 +42,6 @@ mongoose.connect(
 );
 
 //Start to listen to the server
-app.listen(PORT, () => console.log('Server listening on port:', PORT));
+app.listen(PORT, '0.0.0.0', function() {
+    console.log('Listening to port:  ' + PORT);
+});

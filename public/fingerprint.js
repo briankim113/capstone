@@ -39,6 +39,20 @@ function detectedGCS(t, b) {
     return modifications;
 }
 
+function getDimensionJSON(element) {
+    var rect = element.getBoundingClientRect();
+    return {
+      top: rect.top,
+      right: rect.right,
+      bottom: rect.bottom,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height,
+      x: rect.x,
+      y: rect.y
+    };
+  }
+
 var extensions = {};
 
 document.addEventListener("DOMContentLoaded", function(e) {
@@ -84,22 +98,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
         console.log(ghosteryElem);
         
         // dimensions
-        extensions["ghostery"] = {
-            clientHeight : ghosteryElem.clientHeight,
-            clientLeft : ghosteryElem.clientLeft, //always 0
-            clientTop : ghosteryElem.clientTop, //always 0
-            clientWidth : ghosteryElem.clientWidth,
+        extensions["ghostery"] = getDimensionJSON(ghosteryElem);
+        
+        // extensions["ghostery"] = {
+        //     clientHeight : ghosteryElem.clientHeight,
+        //     clientLeft : ghosteryElem.clientLeft, //always 0
+        //     clientTop : ghosteryElem.clientTop, //always 0
+        //     clientWidth : ghosteryElem.clientWidth,
 
-            offsetHeight : ghosteryElem.offsetHeight,
-            offsetLeft : ghosteryElem.offsetLeft,
-            offsetTop : ghosteryElem.offsetTop,
-            offsetWidth : ghosteryElem.offsetWidth,
+        //     offsetHeight : ghosteryElem.offsetHeight,
+        //     offsetLeft : ghosteryElem.offsetLeft,
+        //     offsetTop : ghosteryElem.offsetTop,
+        //     offsetWidth : ghosteryElem.offsetWidth,
 
-            scrollHeight : ghosteryElem.scrollHeight,
-            scrollLeft : ghosteryElem.scrollLeft, //always 0
-            scrollTop : ghosteryElem.scrollTop, //always 0
-            scrollWidth : ghosteryElem.scrollWidth
-        };
+        //     scrollHeight : ghosteryElem.scrollHeight,
+        //     scrollLeft : ghosteryElem.scrollLeft, //always 0
+        //     scrollTop : ghosteryElem.scrollTop, //always 0
+        //     scrollWidth : ghosteryElem.scrollWidth
+        // };
 
         // other attributes to add - NamedNodeMap
         let attributes = ghosteryElem.attributes;
@@ -118,8 +134,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (darkReaderMeta != null) {
         console.log(darkReaderMeta);
 
-        //dimensions don't seem useful but it could be useful in distinguishing extensions
-        extensions["darkReader"] = {};
+        //dimensions - don't seem useful but still good for initialization and consistency
+        extensions["darkReader"] = getDimensionJSON(darkReaderMeta);
 
         // other attributes to add - NamedNodeMap
         let attributes = darkReaderMeta.attributes;

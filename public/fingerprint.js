@@ -39,8 +39,6 @@ function detectedGCS(t, b) {
     return modifications;
 }
 
-// var DOMextensions = []; //array of JSON object DomExt
-// var CSSextensions = []; //array of JSON object CssExt
 var extensions = {};
 
 document.addEventListener("DOMContentLoaded", function(e) {
@@ -83,16 +81,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
     */
     let ghosteryElem = document.getElementById("ghostery-tracker-tally");
     if (ghosteryElem != null) {
-        console.log(JSON.stringify(ghosteryElem));
-        console.log(JSON.stringify(ghosteryElem.attributes));
         console.log(ghosteryElem);
-        console.log(ghosteryElem.attributes);
-
+        
+        // dimensions
         extensions["ghostery"] = {
-            id: ghosteryElem.id,
             clientHeight : ghosteryElem.clientHeight,
-            // clientLeft : ghosteryElem.clientLeft, //always 0
-            // clientTop : ghosteryElem.clientTop,
+            clientLeft : ghosteryElem.clientLeft, //always 0
+            clientTop : ghosteryElem.clientTop, //always 0
             clientWidth : ghosteryElem.clientWidth,
 
             offsetHeight : ghosteryElem.offsetHeight,
@@ -101,12 +96,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
             offsetWidth : ghosteryElem.offsetWidth,
 
             scrollHeight : ghosteryElem.scrollHeight,
-            // scrollLeft : ghosteryElem.scrollLeft, //always 0
-            // scrollLeftMax : ghosteryElem.scrollLeftMax,
-            // scrollTop : ghosteryElem.scrollTop,
-            // scrollTopMax : ghosteryElem.scrollTopMax,
+            scrollLeft : ghosteryElem.scrollLeft, //always 0
+            scrollTop : ghosteryElem.scrollTop, //always 0
             scrollWidth : ghosteryElem.scrollWidth
         };
+
+        // other attributes to add - NamedNodeMap
+        let attributes = ghosteryElem.attributes;
+        console.log(attributes);
+        for (var i=0; i<attributes.length; i++){
+            let item = attributes.item(i);
+            extensions["ghostery"][item.name] = item.value;
+        }
     }
     else {
         console.log("Ghostery not detected");
@@ -115,15 +116,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //Dark Reader meta tag
     let darkReaderMeta = document.querySelector('meta[name="darkreader"]')
     if (darkReaderMeta != null) {
-        console.log(JSON.stringify(darkReaderMeta));
-        console.log(JSON.stringify(darkReaderMeta.attributes));
         console.log(darkReaderMeta);
-        console.log(darkReaderMeta.attributes);
 
-        extensions["darkReader"] = {
-            name: darkReaderMeta.name,
-            content : darkReaderMeta.content
-        };
+        //dimensions don't seem useful but it could be useful in distinguishing extensions
+        extensions["darkReader"] = {};
+
+        // other attributes to add - NamedNodeMap
+        let attributes = darkReaderMeta.attributes;
+        console.log(attributes);
+        for (var i=0; i<attributes.length; i++){
+            let item = attributes.item(i);
+            extensions["darkReader"][item.name] = item.value;
+        }
     }
     else {
         console.log("Dark Reader not detected");

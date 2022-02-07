@@ -1,6 +1,6 @@
 function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key))
             return false;
     }
     return true;
@@ -42,16 +42,16 @@ function detectedGCS(t, b) {
 function getDimensionJSON(element) {
     var rect = element.getBoundingClientRect();
     return {
-      top: rect.top,
-      right: rect.right,
-      bottom: rect.bottom,
-      left: rect.left,
-      width: rect.width,
-      height: rect.height,
-      x: rect.x,
-      y: rect.y
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
     };
-  }
+}
 
 var extensions = {};
 

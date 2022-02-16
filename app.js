@@ -23,7 +23,7 @@ app.use('/fp', fpRoute);
 //submit a CssExt data to database when receiving it via POST
 app.post('/', async (req, res) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
         let fp = await new FpModel({extensions : req.body});
         console.log(fp);
         fp.save();

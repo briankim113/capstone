@@ -159,4 +159,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
     xhr.setRequestHeader("Content-Type", "application/json");
     var data = JSON.stringify(extensions);
     xhr.send(data);
+
+    console.log(document.styleSheets.length);
+    for (var i=0; i<document.styleSheets.length; i++){
+        console.log(document.styleSheets[i]);
+    }
 });
+
+// window.onload = function(e){
+//     console.log(document.styleSheets.length);
+//     for (var i=0; i<document.styleSheets.length; i++){
+//         console.log(document.styleSheets[i].cssRules);
+//     }
+// }

@@ -57,6 +57,6 @@ function callMO(){
 
 document.addEventListener("DOMContentLoaded", callMO()); //start tracking changes as soon as we are done loading the server-provided DOM
 
-window.addEventListener('load', function() {
-    console.log(records);
-});
+// window.addEventListener('load', function() {
+//     console.log(records);
+// });

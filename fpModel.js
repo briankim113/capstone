@@ -37,7 +37,7 @@ const mongoose = require('mongoose');
 
 const Fp = mongoose.Schema({
     date : {type : Date, default : Date.now},
-    extensions : Object
+    data : Object
 })
 
 const FpModel = mongoose.model('fps', Fp);

@@ -3,4 +3,4 @@ node_modules
 .DS_Store
 *.txt
 timer.js
-insertion-original.js
+*-original.js

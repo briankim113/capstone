@@ -1,4 +1,6 @@
-var container = document.documentElement || document.body;
+//this file saves all MutationRecords into an array
+
+var records = []; //array of records to which descriptions will be appended
 
 let config = {
     /* childList, attributes, characterData - one of these three should be in the config */
@@ -18,30 +20,35 @@ function callback(mutationList){
             if (mutation.addedNodes.length > 0) {
                 mutation.addedNodes.forEach(
                     function(node) {
-                      console.log('ADD\n' + node.outerHTML + '\nTO\n' + mutation.target.nodeName);
+                        records[records.length] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
+                    //   console.log('ADD\t' + node.outerHTML + '\tTO\t' + mutation.target.nodeName);
                     },
                 );
             }
             if (mutation.removedNodes.length > 0) {
                 mutation.removedNodes.forEach(
                     function(node) {
-                      console.log('REMOVE\n' + node.outerHTML + '\nFROM\n' + mutation.target.nodeName);
+                        records[records.length] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
+                    //   console.log('REMOVE\t' + node.outerHTML + '\tFROM\t' + mutation.target.nodeName);
                     },
                 );
             }
         }
         else if (mutation.type == 'attributes') {
-            console.log(
-                'The ' + mutation.attributeName + ' attribute at '
-                + mutation.target.nodeName + ' was modified from "'
-                + mutation.oldValue + '" to "'
-                + mutation.target.getAttribute(mutation.attributeName) + '"'
-            );
+            records[records.length] = 'CHANGE ' + mutation.attributeName + ' AT ' + mutation.target.nodeName + ' FROM ' + mutation.oldValue + ' TO ' + mutation.target.getAttribute(mutation.attributeName);
+            // console.log(
+            //     'The ' + mutation.attributeName + ' attribute at '
+            //     + mutation.target.nodeName + ' was modified from "'
+            //     + mutation.oldValue + '" to "'
+            //     + mutation.target.getAttribute(mutation.attributeName) + '"'
+            // );
         }
     }
     // observer.takeRecords(); //returns the last batch of changes before the callback has been fired
     // observer.disconnect(); //stops tracking changes
 }
+
+var container = document.documentElement || document.body;
 
 function callMO(){
     observer = new MutationObserver(callback);
@@ -49,3 +56,7 @@ function callMO(){
 }
 
 document.addEventListener("DOMContentLoaded", callMO()); //start tracking changes as soon as we are done loading the server-provided DOM
+
+window.addEventListener('load', function() {
+    console.log(records);
+});

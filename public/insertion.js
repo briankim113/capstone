@@ -1,4 +1,4 @@
-// called inside document.body so there is a body element to attach to
+//this file dynamically inserts to document.body some CSS triggers that are mapped to manually picked extensions
 
 const elemid_list = [
     680, 681, 738, 1049, 1050, 1052, 1053, 1056, 1075, 1076, 1078, 1079, 1080, 1082, 1083, 1088, 1090, 1092, 1093, 1104, 1107, 1108, 1119, 5167, 6100, 6508, 6509, 27384, 28048, 28049, 28063, 28066, 28079, 28093, 28098, 28113, 28118, 28125, 28167, 28183, 28186, 28213, 28235, 28238, 31473, 34804, 35341, 35342, 35343, 35344,
@@ -162,7 +162,5 @@ elemid_list.forEach(function (elemid, index) {
     elem.className = 'trigger';
     elem.id = elemid;
     elem.innerHTML = elemid_to_html[elemid];
-    document.body.appendChild(elem);
+    document.head.appendChild(elem);
 });
-
-// console.log("insertion done");

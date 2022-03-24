@@ -1,4 +1,7 @@
 window.addEventListener('load', function() {
+    // fetch browser and OS information
+    console.log(window.navigator.userAgent);
+
     // console.log(records); //from mutation.js
     // console.log(extensions); //from fingerprint.js
 

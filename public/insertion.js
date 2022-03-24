@@ -1,8 +1,8 @@
 //this file dynamically inserts to document.body some CSS triggers that are mapped to manually picked extensions
 
 const elemid_list = [
-    680, 681, 738, 1049, 1050, 1052, 1053, 1056, 1075, 1076, 1078, 1079, 1080, 1082, 1083, 1088, 1090, 1092, 1093, 1104, 1107, 1108, 1119, 5167, 6100, 6508, 6509, 27384, 28048, 28049, 28063, 28066, 28079, 28093, 28098, 28113, 28118, 28125, 28167, 28183, 28186, 28213, 28235, 28238, 31473, 34804, 35341, 35342, 35343, 35344,
-    28913, 28914, 28915, 28916, 28917, 28918, 28919, 28920, 28921, 28922, 28923, 28924, 28925, 28926, 28927,
+    680, 681, 738, 1049, 1050, 1052, 1053, 1056, 1075, 1076, 1078, 1079, 1080, 1082, 1083, 1088, 1090, 1092, 1093, 1104, 1107, 1108, 1119, 5167, 6100, 6508, 6509, 27384, 28048, 28049, 28063, 28066, 28079, 28093, 28098, 28113, 28118, 28125, 28167, 28183, 28186, 28213, 28235, 28238, 31473, 34804, 35341, 35342, 35343, 35344, //1, 2, 3,
+    28913, 28914, 28915, 28916, 28917, 28918, 28919, 28920, 28921, 28922, 28923, 28924, 28925, 28926, 28927, //11, 12, 13, 14,
     42499, 42501,
     32373,
     1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 1591, 1592, 1593, 1594, 1595, 1596, 1597, 1598, 1599, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 2222, 2223, 2224, 2225, 2226, 2227, 2228,
@@ -10,9 +10,11 @@ const elemid_list = [
     47624, 47625, 47626, 47627, 47628, 47629, 47630
 ]
 
+//1, 2, and 3 are test triggers that I manually created for Grammarly
+//11, 12, 13, and 14 are test triggers for AdGuard AdBlocker
 const extid_to_elemid = {
-    "kbfnbcaeplbcioakkpcpgfkobkghlhen" : [680, 681, 738, 1049, 1050, 1052, 1053, 1056, 1075, 1076, 1078, 1079, 1080, 1082, 1083, 1088, 1090, 1092, 1093, 1104, 1107, 1108, 1119, 5167, 6100, 6508, 6509, 27384, 28048, 28049, 28063, 28066, 28079, 28093, 28098, 28113, 28118, 28125, 28167, 28183, 28186, 28213, 28235, 28238, 31473, 34804, 35341, 35342, 35343, 35344],
-    "bgnkhhnnamicmpeenaelnjfhikgbkllg" : [28913, 28914, 28915, 28916, 28917, 28918, 28919, 28920, 28921, 28922, 28923, 28924, 28925, 28926, 28927],
+    "kbfnbcaeplbcioakkpcpgfkobkghlhen" : [680, 681, 738, 1049, 1050, 1052, 1053, 1056, 1075, 1076, 1078, 1079, 1080, 1082, 1083, 1088, 1090, 1092, 1093, 1104, 1107, 1108, 1119, 5167, 6100, 6508, 6509, 27384, 28048, 28049, 28063, 28066, 28079, 28093, 28098, 28113, 28118, 28125, 28167, 28183, 28186, 28213, 28235, 28238, 31473, 34804, 35341, 35342, 35343, 35344], //1, 2, 3],
+    "bgnkhhnnamicmpeenaelnjfhikgbkllg" : [28913, 28914, 28915, 28916, 28917, 28918, 28919, 28920, 28921, 28922, 28923, 28924, 28925, 28926, 28927], //11, 12, 13, 14],
     "ohahllgiabjaoigichmmfljhkcfikeof" : [42499, 42501],
     "bkdgflcldnnnapblkhphbgpggdiikppg" : [32373],
     "eofcbnmajmjmplflapaojjnihcjkigck" : [1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 1591, 1592, 1593, 1594, 1595, 1596, 1597, 1598, 1599, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 2222, 2223, 2224, 2225, 2226, 2227, 2228],
@@ -71,6 +73,10 @@ const elemid_to_html = {
     35342 : "<div trigger='no' orig_class='gr-dictionary-card_nothing'></div><div trigger='yes' class='gr-dictionary-card_nothing'></div>",
     35343 : "<div trigger='no' orig_class='gr-grammar-card_anonymous'></div><div trigger='yes' class='gr-grammar-card_anonymous'></div>",
     35344 : "<div trigger='no' orig_class='gr__tooltip-match'></div><div trigger='yes' class='gr__tooltip-match'></div>",
+    // 1 : "<div orig_class='_1kF5v'><div trigger='no' orig_class='_2DXpn'></div></div><div class='_1kF5v'><div trigger='yes' class='_2DXpn'></div></div>",
+    // 2 : "<div orig_class='_2DXpn'><div trigger='no' orig_class='_3j0IH'></div></div><div class='_2DXpn'><div trigger='yes' class='_3j0IH'></div></div>",
+    // 3 : "<div trigger='no' orig_class='_24bLp'></div><div trigger='yes' class='_24bLp'></div></div>",
+    
     28913 : "<div trigger='no' orig_class='adguard-alert-iframe'></div><div trigger='yes' class='adguard-alert-iframe'></div>",
     28914 : "<div trigger='no' orig_class='adguard-popup-alert'></div><div trigger='yes' class='adguard-popup-alert'></div>",
     28915 : "<div trigger='no' orig_class='adguard-popup-alert__desc'></div><div trigger='yes' class='adguard-popup-alert__desc'></div>",
@@ -86,9 +92,16 @@ const elemid_to_html = {
     28925 : "<div trigger='no' orig_class='adguard-update-popup__logo'></div><div trigger='yes' class='adguard-update-popup__logo'></div>",
     28926 : "<div trigger='no' orig_class='adguard-update-popup__offer'></div><div trigger='yes' class='adguard-update-popup__offer'></div>",
     28927 : "<div trigger='no' orig_class='adguard-update-popup__title'></div><div trigger='yes' class='adguard-update-popup__title'></div>",
+    // 11 : "<div trigger='no' orig_class='adguard-update-popup__offer--show'></div><div trigger='yes' class='adguard-update-popup__offer--show'></div>",
+    // 12 : "<div trigger='no' orig_class='adguard-update-popup__offer-desc-wr'></div><div trigger='yes' class='adguard-update-popup__offer-desc-wr'></div>",
+    // 13 : "<div trigger='no' orig_class='adguard-update-popup__offer-desc'></div><div trigger='yes' class='adguard-update-popup__offer-desc'></div>",
+    // 14 : "<div trigger='no' orig_class='adguard-update-popup__offer-bottom'></div><div trigger='yes' class='adguard-update-popup__offer-bottom'></div>",    
+    
     42499 : "<div trigger='no' orig_class='sg_border'></div><div trigger='yes' class='sg_border'></div>",
     42501 : "<div trigger='no' orig_class='sg_bottom_border'></div><div trigger='yes' class='sg_bottom_border'></div>",
+    
     32373 : "<div trigger='no' orig_class='ddg-extension-hide'></div><div trigger='yes' class='ddg-extension-hide'></div>",
+    
     1572 : "<div orig_class='a-sp-panel'><div orig_class='a-sp-items-wrapper'><div orig_class='a-sp-coupons-items-wrapper'><div orig_id='couponsWrapper'><div orig_class='asp-coupon-item-active-with-code'><div orig_class='asp-coupon-top'><div trigger='no' orig_class='asp-coupon-item-label'></div></div></div></div></div></div></div><div class='a-sp-panel'><div class='a-sp-items-wrapper'><div class='a-sp-coupons-items-wrapper'><div id='couponsWrapper'><div class='asp-coupon-item-active-with-code'><div class='asp-coupon-top'><div trigger='yes' class='asp-coupon-item-label'></div></div></div></div></div></div></div>",
     1573 : "<div orig_class='a-sp-panel'><div orig_class='a-sp-items-wrapper'><div orig_class='a-sp-coupons-items-wrapper'><div orig_id='couponsWrapper'><div trigger='no' orig_class='asp-coupon-item-active'></div></div></div></div></div><div class='a-sp-panel'><div class='a-sp-items-wrapper'><div class='a-sp-coupons-items-wrapper'><div id='couponsWrapper'><div trigger='yes' class='asp-coupon-item-active'></div></div></div></div></div>",
     1574 : "<div orig_class='a-sp-panel'><div orig_class='a-sp-items-wrapper'><div orig_class='a-sp-coupons-items-wrapper'><div orig_id='offersWrapper'><div orig_class='asp-coupon-item-active'><div orig_class='asp-coupon-bottom'><div orig_class='asp-coupon-rate-container'><div trigger='no' orig_class='asp-coupon-rate-container-shape'></div></div></div></div></div></div></div></div><div class='a-sp-panel'><div class='a-sp-items-wrapper'><div class='a-sp-coupons-items-wrapper'><div id='offersWrapper'><div class='asp-coupon-item-active'><div class='asp-coupon-bottom'><div class='asp-coupon-rate-container'><div trigger='yes' class='asp-coupon-rate-container-shape'></div></div></div></div></div></div></div></div>",
@@ -139,6 +152,7 @@ const elemid_to_html = {
     2226 : "<div orig_class='asp-fake-shop-panel'><div orig_class='asp-phishing-body'><div trigger='no' orig_class='asp-warning-button-row'></div></div></div><div class='asp-fake-shop-panel'><div class='asp-phishing-body'><div trigger='yes' class='asp-warning-button-row'></div></div></div>",
     2227 : "<div orig_class='asp-redirect-item-base'><div trigger='no' orig_class='asp-redirect-top'></div></div><div class='asp-redirect-item-base'><div trigger='yes' class='asp-redirect-top'></div></div>",
     2228 : "<div orig_class='asp-search-default'><div orig_class='a-sp-search-box'><div trigger='no' orig_class='a-sp-search-input'></div></div></div><div class='asp-search-default'><div class='a-sp-search-box'><div trigger='yes' class='a-sp-search-input'></div></div></div>",
+    
     17593 : "<div orig_id='android_toast'><em trigger='no'></em></div><div id='android_toast'><em trigger='yes'></em></div>",
     17594 : "<div orig_id='android_toast'><svg trigger='no'></svg></div><div id='android_toast'><svg trigger='yes'></svg></div>",
     29288 : "<div trigger='no' orig_class='android_toast_fadein'></div><div trigger='yes' class='android_toast_fadein'></div>",
@@ -148,6 +162,7 @@ const elemid_to_html = {
     47876 : "<div trigger='no' orig_id='android_toast' orig_class='risky'></div><div trigger='yes' id='android_toast' class='risky'></div>",
     47877 : "<div trigger='no' orig_id='android_toast'></div><div trigger='yes' id='android_toast'></div>",
     47878 : "<div trigger='no' orig_id='android_toast_container'></div><div trigger='yes' id='android_toast_container'></div>",
+    
     47624 : "<div trigger='no' orig_id='_af_content_wall'></div><div trigger='yes' id='_af_content_wall'></div>",
     47625 : "<div trigger='no' orig_id='_af_content_wall_button'></div><div trigger='yes' id='_af_content_wall_button'></div>",
     47626 : "<div trigger='no' orig_id='_af_content_wall_counter'></div><div trigger='yes' id='_af_content_wall_counter'></div>",

@@ -20,16 +20,18 @@ function callback(mutationList){
             if (mutation.addedNodes.length > 0) {
                 mutation.addedNodes.forEach(
                     function(node) {
-                        records[records.length] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
-                    //   console.log('ADD\t' + node.outerHTML + '\tTO\t' + mutation.target.nodeName);
+                        if (node.outerHTML != "undefined") {
+                            records[records.length] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
+                        }
                     },
                 );
             }
             if (mutation.removedNodes.length > 0) {
                 mutation.removedNodes.forEach(
                     function(node) {
-                        records[records.length] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
-                    //   console.log('REMOVE\t' + node.outerHTML + '\tFROM\t' + mutation.target.nodeName);
+                        if (node.outerHTML != "undefined") {
+                            records[records.length] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
+                        }
                     },
                 );
             }

@@ -1,6 +1,7 @@
 //this file saves all MutationRecords into an array
 
-var records = []; //array of records to which descriptions will be appended
+var records = {}; //JSON of records to which mutations will be appended
+var numRecord = 0; //keeps track of number of records used as key for records JSON
 
 let config = {
     /* childList, attributes, characterData - one of these three should be in the config */
@@ -21,7 +22,7 @@ function callback(mutationList){
                 mutation.addedNodes.forEach(
                     function(node) {
                         if (node.outerHTML != undefined) {
-                            records[records.length] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
+                            records[numRecord++] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
                         }
                     },
                 );
@@ -30,14 +31,14 @@ function callback(mutationList){
                 mutation.removedNodes.forEach(
                     function(node) {
                         if (node.outerHTML != undefined) {
-                            records[records.length] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
+                            records[numRecord++] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
                         }
                     },
                 );
             }
         }
         else if (mutation.type == 'attributes') {
-            records[records.length] = 'CHANGE ' + mutation.attributeName + ' AT ' + mutation.target.nodeName + ' FROM ' + mutation.oldValue + ' TO ' + mutation.target.getAttribute(mutation.attributeName);
+            records[numRecord++] = 'CHANGE ' + mutation.attributeName + ' AT ' + mutation.target.nodeName + ' FROM ' + mutation.oldValue + ' TO ' + mutation.target.getAttribute(mutation.attributeName);
             // console.log(
             //     'The ' + mutation.attributeName + ' attribute at '
             //     + mutation.target.nodeName + ' was modified from "'

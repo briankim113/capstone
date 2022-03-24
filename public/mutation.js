@@ -20,7 +20,7 @@ function callback(mutationList){
             if (mutation.addedNodes.length > 0) {
                 mutation.addedNodes.forEach(
                     function(node) {
-                        if (node.outerHTML != "undefined") {
+                        if (node.outerHTML != undefined) {
                             records[records.length] = 'ADD ' + node.outerHTML + ' TO ' + mutation.target.nodeName;
                         }
                     },
@@ -29,7 +29,7 @@ function callback(mutationList){
             if (mutation.removedNodes.length > 0) {
                 mutation.removedNodes.forEach(
                     function(node) {
-                        if (node.outerHTML != "undefined") {
+                        if (node.outerHTML != undefined) {
                             records[records.length] = 'REMOVE ' + node.outerHTML + ' FROM ' + mutation.target.nodeName;
                         }
                     },

@@ -24,7 +24,7 @@ app.use('/fp', fpRoute);
 app.post('/', async (req, res) => {
     try {
         // console.log(req.body);
-        let fp = await new FpModel({data : req.body});
+        let fp = await new FpModel({info : req.body});
         console.log(fp);
         fp.save();
         res.sendStatus(200); //good to go
